@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真实搜索框</title>
+  </div>
+ <head> 
+ <script src="js/jq.js"></script> 
+ </head> 
+ <body id="v1"> 
+ <div class="clock" id="clock"></div> 
+ <script>
+ // 更新时间
+ function updateTime() {
+ const date = new Date();
+ const hours = date.getHours();
+ const minutes = date.getMinutes();
+ const seconds = date.getSeconds();
+ const timeString = `${hours}:${addZero(minutes)}:${addZero(seconds)}`;
+ document.getElementById("clock").textContent = timeString;
+ }
+ // 将一位数字转换为两位数字
+ function addZero(number) {
+ if (number < 10) {
+ return `0${number}`;
+ } else {
+ return number;
+ }
+ }
+ // 每秒更新一次时间
+ setInterval(updateTime, 1000);
+ </script> 
+<style>
+      body{background:url('https://api.dujin.org/bing/m.php');}
+body{width:100%;height:100%;background: url(https://api.dujin.org/bing/m.php) no-repeat;-moz-background-size: cover;    /*背景图片拉伸以铺满全屏*/-ms-background-size: cover;-webkit-background-size: cover;    background-size: cover;}
+        /* 样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+        /* 设置背景颜色 */
+        body {
+            background-color: #f0f0f0;
+            padding-top: 11.25rem;
+            margin: 0 auto;
+            height: 100vh;
+        }
+
+       /* 搜索框容器 */
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+        }
+
+        /* 搜索框输入字段 */
+        .search-input {
+            width: 100%;
+            border: none;
+            padding: 20px;
+            flex: 1;
+            outline: none;
+        }
+
+        /* 搜索按钮 */
+        .search-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* 鼠标悬停时按钮颜色变化 */
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 搜索建议容器 */
+        .suggestions-container {
+            /* document.querySelector(".search-button").addEventListener("touchstart", search);position: absolute; */
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            max-height: 150px;
+            overflow-y: auto;
+            width: 300px;
+            display: none;
+        }
+
+        /* 搜索建议列表项 */
+        .suggestion {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+         /*修改和增加的样式——ice_xnt*/
+        /*设置 search_form 盒子的宽度*/
+        div.search_form{width:100%;}
+        /*设置 search_form 盒子里面的子元素 form 的样式*/
+        div.search_form>form{
+	display:grid;/*设置布局为 grid 网格布局*/
+	grid-template-columns:3fr 1fr;/*设置各列的元素宽度占比*/
+	grid-template-rows:1fr;/*设置单行的高度*/
+    }
+   /* 美化时间罗盘 */
+ body {
+ background-color: #00c8ff;
+ font-family: Arial, sans-serif;
+ }
+ .clock {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 10vh;
+ font-size: 3rem;
+ color:#FFFFFF;
+ }
+</style>
+		<head>
+	<body>
+    <div class="search-container">
+     
+      <div class="search_form">
+        <form action="https://cn.bing.com/search" method="get">
+       <input type="search" class="search-input" placeholder="搜索..." name="q">
+      <button class="search-button" onclick="search()">搜索</button>
+      </form>
+     </div>
+   
+   <div class="suggestions-container" id="suggestions-container"></div>
+    </body>
+</html>
+
